@@ -1,17 +1,16 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Node1.js CI
 
 on:
   push:
-    branches: [ "btpn-test" ]
+    branches: [ "backend" ]
   pull_request:
-    branches: [ "btpn-test" ]
+    branches: [ "backend" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -32,7 +31,7 @@ jobs:
       env:
         HEROKU_DEPLOY_SECRET: ${{secrets.HEROKU_DEPLOY_SECRET}}
         HEROKU_APP_NAME: ${{secrets.HEROKU_APP_NAME}}
-      if: github.ref == 'refs/heads/bookshelf-apps' && job.status == 'success'
+      if: github.ref == 'refs/heads/backend' && job.status == 'success'
       run: |
         git remote add heroku https://heroku:$HEROKU_DEPLOY_SECRET@git.heroku.com/$HEROKU_APP_NAME.git
         git push heroku HEAD:master -f    
