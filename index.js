@@ -18,14 +18,14 @@ try {
     console.log(error)
 }
 
-app.use(express.json());
-app.use(cookieParser());
 app.use(cors({
     credentials:true,
     origin:'https://ap1-frontend.herokuapp.com/'
     
 }));
 
+app.use(express.json());
+app.use(cookieParser());
 app.use('/api', Routes);
 
 app.listen(port, ()=>{
