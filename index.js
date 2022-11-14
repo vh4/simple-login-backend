@@ -4,11 +4,13 @@ import Users from "./model/UserModel.js";
 import Routes from "./route/api.js";
 import * as dotenv from "dotenv"
 import cookieParser from "cookie-parser";
-import cors from "cors";
+import cors from "cors"
 dotenv.config();
 
 const app = express();
 const port  = process.env.PORT || 8000;
+
+app.use(cors());
 
 try {
     await db.authenticate();
@@ -20,9 +22,8 @@ try {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
 
-app.use('/api', Routes);
+app.use('/api', cors() ,Routes);
 
 app.listen(port, ()=>{
     console.log("server listening on port " + port);
