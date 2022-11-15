@@ -8,7 +8,7 @@ import helmet from "helmet"
 
 dotenv.config();
 const app = express();
-const port  = process.env.PORT || 3000;
+const port  = process.env.PORT || 5000;
 
 app.set('trust proxy', 1);
 app.use(cors({
