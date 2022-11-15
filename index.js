@@ -4,15 +4,16 @@ import Routes from "./route/api.js";
 import * as dotenv from "dotenv"
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import helmet from "helmet"
+
 dotenv.config();
 
 const app = express();
 const port  = process.env.PORT || 8000;
 
-app.use(cors({
-    credentials:true,
-    origin: '*'
-})); 
+app.use(cors()); 
+
+app.use(helmet());
 
 try {
     await db.authenticate();
