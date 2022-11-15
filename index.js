@@ -8,10 +8,6 @@ dotenv.config();
 
 const app = express();
 const port  = process.env.PORT || 8000;
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://ap1-frontend.herokuapp.com/"); // update to match the domain you will make the request from
-    next();
-});
 
 app.use(cors({
     credentials:true,
