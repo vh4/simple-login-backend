@@ -15,7 +15,7 @@ export const getUsers = async (req, res) => {
     
     const {name, email, password, confirmPassword} = req.body;
 
-    if(password !== confirmPassword){return res.status(400).json({message:"password and conform password not valid brooo!"})}
+    if(password !== confirmPassword){return res.status(400).json({message:"password and conform password not valid !"})}
     
     const hashPassword = await argon2.hash(password);
 
