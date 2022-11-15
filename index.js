@@ -1,11 +1,11 @@
 import express from "express";
 import db from "./config/database.js";
-import Users from "./model/UserModel.js";
 import Routes from "./route/api.js";
 import * as dotenv from "dotenv"
 import cookieParser from "cookie-parser";
 import cors from "cors";
 dotenv.config();
+import  { createProxyMiddleware } from 'http-proxy-middleware';
 
 const app = express();
 const port  = process.env.PORT || 8000;
@@ -18,12 +18,15 @@ try {
     console.log(error)
 }
 
-app.use(cors({
-    credentials:true,
-    origin:'https://ap1-frontend.herokuapp.com/'
-    
-}));
-
+app.use(cors());
+const options = {
+    target: 'https://ap1-backend.herokuapp.com/api', // target host with the same base path
+    changeOrigin: true, // needed for virtual hosted sites
+  };
+  
+  
+const ProxyCreated = createProxyMiddleware(options);
+app.use('/api', ProxyCreated);
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api', Routes);
