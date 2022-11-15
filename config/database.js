@@ -1,9 +1,11 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize(process.env.NAME_DB, process.env.USER_DB, process.env.PASSWORD_DB, {
-    host:process.env.URL_DB,
-    dialect:"postgres",
-    logging: false,
-    ssl:true,
+const db = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+        ssl: true
+    }
 });
+
 export default db; 

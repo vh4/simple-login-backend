@@ -26,7 +26,7 @@ export const getUsers = async (req, res) => {
             password:hashPassword,
         });
 
-        return res.status(201).json({message: "Users created successfully!"});
+        return res.status(201).json({message: "Users created successfully!!!!"});
         
     } catch (error) {
         console.log(error);
