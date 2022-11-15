@@ -17,8 +17,8 @@ export const getUsers = async (req, res) => {
 
     if(password !== confirmPassword){return res.status(400).json({message:"password and conform password not valid brooo!"})}
     
-    //const hashPassword = await argon2.hash(password);
-    
+    const hashPassword = await argon2.hash(password);
+
     try {
         // await Users.create({
         //     name:name,
@@ -26,7 +26,7 @@ export const getUsers = async (req, res) => {
         //     password:hashPassword,
         // });
 
-        return res.status(201).json({message: "Users created successfully"});
+        return res.status(201).json({message: "Users created successfully!"});
         
     } catch (error) {
         console.log(error);
