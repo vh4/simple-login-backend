@@ -4,5 +4,6 @@ const db = new Sequelize(process.env.NAME_DB, process.env.USER_DB, process.env.P
     host:process.env.URL_DB,
     dialect:"postgres",
     logging: false,
+    ssl:true,
 });
 export default db; 
