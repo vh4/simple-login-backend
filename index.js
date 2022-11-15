@@ -12,6 +12,7 @@ const port  = process.env.PORT || 3000;
 
 app.use(cors({
     origin:["https://ap1-frontend.herokuapp.com/", "http://localhost:3000/"],
+    methods: ['GET', 'POST','DELETE', 'PUT', 'PATCH'],
     credentials:true
 })); 
 app.use(helmet());
